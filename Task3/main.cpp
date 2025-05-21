@@ -37,6 +37,7 @@ Type getCommandType(const string& commandString) {
 }
 int main()
 {
+    setlocale(LC_ALL, "rus");
     string command;
     while (true)
     {
