@@ -8,8 +8,8 @@
 using namespace std;
 enum class Type {
     CREATE_TRL,
-    TRL_FOR_TOWN,
-    TOWNS_FOR_TRL,
+    TRL_IN_STOP,
+    STOPS_IN_TRL,
     TRLS,
     EXIT,
     UNKNOWN
@@ -19,11 +19,11 @@ Type getCommandType(const string& commandString) {
     if (commandString == "CREATE_TRL") {
         return Type::CREATE_TRL;
     }
-    else if (commandString == "TRL_FOR_TOWN") {
-        return Type::TRL_FOR_TOWN;
+    else if (commandString == "TRL_IN_STOP") {
+        return Type::TRL_IN_STOP;
     }
-    else if (commandString == "TOWNS_FOR_TRL") {
-        return Type::TOWNS_FOR_TRL;
+    else if (commandString == "STOPS_IN_TRL") {
+        return Type::STOPS_IN_TRL;
     }
     else if (commandString == "TRLS") {
         return Type::TRLS;
@@ -37,7 +37,7 @@ Type getCommandType(const string& commandString) {
 }
 int main()
 {
-    setlocale(LC_ALL, "rus");
+    setlocale(LC_ALL, "Russian"); 
     string command;
     while (true)
     {
@@ -56,28 +56,29 @@ int main()
                 stops.push_back(stop);
             }
             create(name, stops, trolleybuses);
-            break; 
+            break;
         }
         case Type::TRLS:
             display(trolleybuses);
-            break; 
-        case Type::TRL_FOR_TOWN: {
+            break;
+        case Type::TRL_IN_STOP: {
             string stop;
             ss >> stop;
             find(stop, trolleybuses);
             break;
         }
-        case Type::TOWNS_FOR_TRL: {
+        case Type::STOPS_IN_TRL: {
             string name;
             ss >> name;
             stops(name, trolleybuses);
-            break; 
+            break;
         }
         case Type::EXIT:
             return 0;
         case Type::UNKNOWN:
             cout << "Неизвестная команда." << endl;
-            break;
+            break; 
         }
     }
+    return 0; 
 }
