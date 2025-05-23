@@ -42,7 +42,7 @@ int main(){
     while (true)
     {
         cin >> command;
-        if (command == "NEW_STUDENTS")\
+        if (command == "NEW_STUDENTS")
         {
             int numbers;
             cin >> numbers;
